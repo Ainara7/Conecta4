@@ -29,7 +29,7 @@ def randomHeuristic (state):
                c+=1 #cuentas
 
    return c"""
-def newHeuristic(state):
+"""def newHeuristic(state):
 
     if state.utility != 0 and state.to_move == 'X':
         return state.utility
@@ -57,4 +57,41 @@ def consecutiveChips(board, move, player, (delta_x, delta_y)):
         x, y = move
 
     print (n, ' hola')
-    return n
+    return n"""
+
+def newHeuristic(state):
+
+    if state.utility != 0 and state.to_move == 'X':
+        return state.utility
+
+    legal_moves = [(x, y) for (x, y) in state.moves if y == 1 or (x, y-1) in state.board]
+
+    h = 0
+    for i in legal_moves:
+        h += values(state.board, i, state.to_move)
+
+    return h
+
+def values(board, move, player):
+    x, y = move
+    c = 0
+
+    while(board.get(x, y) == player):
+        if x == 4 and y == 4: #ideal pq es el centro
+            c +=100
+        elif x == y: #diagonal que empieza en 1.1
+            c +=25
+        elif x == 7 or y == 6: #diagonales que empiezan en 6 o 7
+            c +=25
+        elif x == 3:
+            c +=15
+        elif x < 3 and x > 1:
+            c +=10
+        elif y == 3:
+            c +=15
+        elif y == 5:
+            c +=25
+        elif y > 1 and y < 3:
+            c +=10
+
+    return c

@@ -25,9 +25,11 @@ while level == None or (level > 0 and level <= 3):
    print "3 para el nivel dificil"
    l = raw_input("Nivel: ")
    level = int(l)"""
-
 state = game.initial
 player = 'X'
+
+nivel = raw_input("Selecciona el nivel: 1 Facil, 2 Medio, 3 Dificil- ")
+profundidad = int(str(nivel).strip())
 
 while True:
    print "Jugador a mover:", game.to_move(state)
@@ -49,8 +51,7 @@ while True:
        print "Thinking..."
        #move = games.minimax_decision(state, game)
        #move = games.alphabeta_full_search(state, game)
-       move = games.alphabeta_search(state, game, eval_fn=heuristic.newHeuristic)
-       #print heuristic.consecutiveChips(state.board, move , state.to_move, (1,1))
+       move = games.alphabeta_search(state, game, d=profundidad, eval_fn=heuristic.newHeuristic)
        state = game.make_move(move, state)
        player = 'O'
    print "-------------------"

@@ -7,7 +7,7 @@ from utils import *
 import random
 import time
 
-class levelPlayer:
+"""class levelPlayer:
 
     def __init__(self, dificulty):
 
@@ -23,7 +23,7 @@ class levelPlayer:
 
         totaltime = time.time() - startTime
 
-        return gamePlay
+        return gamePlay"""
 
 #______________________________________________________________________________
 # Minimax Search
