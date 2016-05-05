@@ -13,7 +13,9 @@ def randomHeuristic (state):
        return random.randint(1, 99)
 
 
-"""def count (state):
+"""
+    metodo para contar
+def count (state):
 
    #Saber el momento de la partida
    if ((state.utility != 0) and (state.to_move == "X")):
@@ -28,8 +30,15 @@ def randomHeuristic (state):
            if (state.board.get((x, y)) == "O"): #pos donde ha movido el jugador
                c+=1 #cuentas
 
-   return c"""
-"""def newHeuristic(state):
+   return c
+
+"""
+
+"""
+
+    heuristica 1
+
+def newHeuristic(state):
 
     if state.utility != 0 and state.to_move == 'X':
         return state.utility
@@ -57,8 +66,13 @@ def consecutiveChips(board, move, player, (delta_x, delta_y)):
         x, y = move
 
     print (n, ' hola')
-    return n"""
+    return n
 
+"""
+
+"""
+
+    heuristica 2
 def newHeuristic(state):
 
     if state.utility != 0 and state.to_move == 'X':
@@ -95,3 +109,16 @@ def values(board, move, player):
             c +=10
 
     return c
+
+"""
+
+def newHeuristic(state):
+    h = 0
+    for column in range(1,8):
+        for row in range(1,7):
+            if state.board.get(column, row):
+                for element in range(1,4):
+                    if state.to_move == 'O':
+                        h+=10
+    print h
+    return h
