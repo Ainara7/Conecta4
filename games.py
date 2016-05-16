@@ -5,25 +5,6 @@ __author__ = 'Aicora'
 
 from utils import *
 import random
-import time
-
-"""class levelPlayer:
-
-    def __init__(self, dificulty):
-
-        if dificulty == 0 :
-            self.player = query_player
-        elif dificulty == 1:
-            self.player = alphabeta_player
-
-    def play(self, game, state):
-        startTime = time.time()
-
-        gamePlay = self.play(self, game, state)
-
-        totaltime = time.time() - startTime
-
-        return gamePlay"""
 
 #______________________________________________________________________________
 # Minimax Search

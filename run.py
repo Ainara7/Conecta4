@@ -1,32 +1,19 @@
 import games
 import heuristic
 
-
 #game = games.TicTacToe(h=3,v=3,k=3)
 game = games.ConnectFour()
 
-
-"""while True:
-
-   ficha = raw_input("Elija ficha X o O:")
-
-       if ficha=="X" or ficha=="O":
-           break
-       else:
-           print "Por favor, introduzca la ficha"
-
-player=ficha
-
-level = None
-while level == None or (level > 0 and level <= 3):
-   print "Seleccione la dificultad: "
-   print "1 para el nivel facil"
-   print "2 para el nivel medio"
-   print "3 para el nivel dificil"
-   l = raw_input("Nivel: ")
-   level = int(l)"""
 state = game.initial
-player = 'X'
+
+entrada = raw_input("Elige quien empieza- 0: Maquina y 1: Jugador- ")
+respuesta = int(str(entrada).strip())
+
+if(respuesta == 0):
+    player = 'O'
+else:
+    player = 'X'
+
 
 nivel = raw_input("Selecciona el nivel: 1 Facil, 2 Medio, 3 Dificil- ")
 profundidad = int(str(nivel).strip())
@@ -51,7 +38,11 @@ while True:
        print "Thinking..."
        #move = games.minimax_decision(state, game)
        #move = games.alphabeta_full_search(state, game)
-       move = games.alphabeta_search(state, game, d=profundidad, eval_fn=heuristic.newHeuristic)
+       if profundidad == 1:
+           move = games.alphabeta_search(state, game, d=1, eval_fn=heuristic.randomHeuristic)
+       else:
+           move = games.alphabeta_search(state, game, d=profundidad, eval_fn=heuristic.newHeuristic)
+
        state = game.make_move(move, state)
        player = 'O'
    print "-------------------"
