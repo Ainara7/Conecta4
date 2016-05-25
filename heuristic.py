@@ -2,8 +2,8 @@ import games
 import random
 
 
-def randomHeuristic (state):
-   player = games.ConnectFour().to_move(state)
+def randomHeuristic (state, player):
+   # player = games.ConnectFour().to_move(state)
 
    if games.ConnectFour().utility(state, player) == 1:
        return 100
@@ -12,19 +12,20 @@ def randomHeuristic (state):
    else:
        return random.randint(1, 99)
 
-def newHeuristic(state):
-
+def newHeuristic(state, player):
+    #Si uno de los jugadores va a ganar, devuelve un valor muy grande
     if state.utility != 0:
         return 1000 * state.utility
+
 
     legal_moves = [(x, y) for (x, y) in state.moves if y == 1 or (x, y-1) in state.board]
 
     h = 0
     for i in legal_moves:
-        h += consecutiveChips(state.board, i, state.to_move, (0, 1))
-        h += consecutiveChips(state.board, i, state.to_move, (1, 0))
-        h += consecutiveChips(state.board, i, state.to_move, (1, 1))
-        h += consecutiveChips(state.board, i, state.to_move, (1, -1))
+        h += consecutiveChips(state.board, i, player, (0, 1))
+        h += consecutiveChips(state.board, i, player, (1, 0))
+        h += consecutiveChips(state.board, i, player, (1, 1))
+        h += consecutiveChips(state.board, i, player, (1, -1))
     print h
     return h
 
