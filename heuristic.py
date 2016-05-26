@@ -15,6 +15,7 @@ def randomHeuristic (state, player):
 def newHeuristic(state, player):
     #Si uno de los jugadores va a ganar, devuelve un valor muy grande
     if state.utility != 0:
+        print 1000 * state.utility
         return 1000 * state.utility
 
 
@@ -30,19 +31,34 @@ def newHeuristic(state, player):
     return h
 
 def consecutiveChips(board, move, player, (delta_x, delta_y)):
-    x, y = move
-    n = 0
 
+    y, x = move
+    y = y - 1
+
+    if y >= 6:
+        y = 6
+    if y <= 0:
+        y = 1
+
+    n = 0
     while board.get((x, y)) == player:
         n += 1
         x, y = x + delta_x, y + delta_y
 
     y, x = move
+    y = y - 1
+
+    if y >= 6:
+        y = 6
+    if y <= 0:
+        y = 1
 
     while board.get((x, y)) == player:
         n += 1
         x, y = x - delta_x, y - delta_y
 
+
+    if(n > 0):
+        n -= 1
+
     return n
-
-
