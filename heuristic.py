@@ -18,7 +18,6 @@ def newHeuristic(state, player):
         print 1000 * state.utility
         return 1000 * state.utility
 
-
     legal_moves = [(x, y) for (x, y) in state.moves if y == 1 or (x, y-1) in state.board]
 
     h = 0
