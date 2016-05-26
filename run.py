@@ -110,7 +110,6 @@ if(gamemode == 1):
 else:
     player = 'X'
 
-
 game = games.ConnectFour(player=player)
 state = game.initial
 nivel = raw_input("Selecciona el nivel: 1 Facil, 2 Medio, 3 Dificil 4 DESAFIO- ")

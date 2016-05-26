@@ -6,6 +6,7 @@ __author__ = 'Aicora'
 from utils import *
 import random
 
+
 #______________________________________________________________________________
 # Minimax Search
 
